@@ -3,6 +3,6 @@ module Webpack
     include ActiveSupport::Configurable
 
     config_accessor(:path) { File.join('config', 'manifest.json') }
-    config_accessor(:raise_on_errors) { false }
+    config_accessor(:raise_on_compilation_errors) { false }
   end
 end

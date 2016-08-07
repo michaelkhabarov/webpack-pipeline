@@ -1,5 +1,4 @@
 require 'webpack/configuration'
-require 'webpack/error'
 
 module Webpack
   class Manifest
@@ -14,8 +13,8 @@ module Webpack
     end
 
     def asset_url(source)
-      if configuration.raise_on_errors && data['errors'].present?
-        raise Webpack::CompileError, data['errors'].split('\n').join("\n")
+      if configuration.raise_on_compilation_errors && data['errors'].present?
+        raise CompilationError, data['errors'].split('\n').join("\n")
       end
 
       asset_name = asset_in_chunks(source) || asset_images(source)
@@ -37,7 +36,7 @@ module Webpack
     end
 
     def asset_images(source)
-      data['assets'].present? ? data['assets'][source] : source
+      data['assets'][source]
     end
 
     def data
