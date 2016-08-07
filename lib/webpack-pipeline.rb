@@ -1,4 +1,3 @@
-
 module Webpack
   class Railtie < Rails::Railtie
     initializer 'load manifest class' do
