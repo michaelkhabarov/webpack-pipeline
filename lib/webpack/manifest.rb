@@ -32,7 +32,7 @@ module Webpack
     end
 
     def asset_images(source)
-      data['assets'][source]
+      data['assets'].present? ? data['assets'][source] : source
     end
 
     def data
